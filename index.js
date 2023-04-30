@@ -87,6 +87,14 @@ const view = {
   },
   renderCount(tryCount) {
     document.querySelector('.tryCount').textContent = `tried: ${tryCount} times`
+  },
+  appendUnMatchAnimation(...cards) {
+    cards.map(card => {
+      card.classList.add('unMatch')
+      card.addEventListener('animationend', function (event) {
+        event.target.classList.remove('unMatch'), { once: true }
+      })
+    })
   }
 }
 
@@ -128,6 +136,7 @@ const controller = {
           this.currentState = GAME_STATE.FirstCardAwaits
         } else {//配對失敗
           this.currentState = GAME_STATE.CardMatchFailed
+          view.appendUnMatchAnimation(...model.revealedCards)
           // setTimeout(() => { }, 1000)
           setTimeout(this.resetCards, 1000)
         }

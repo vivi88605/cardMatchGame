@@ -44,6 +44,17 @@ body {
   background-color: #dae0e3;
 }
 
+.unMatch{
+  animation-name: unMatchAnimation;
+  animation-duration:0.2s;
+  animation-iteration-count: 3;
+}
+@keyframes unMatchAnimation{
+  to{
+    border: 1px solid yellow;
+  }
+}
+
 #header {
   display: flex;
   flex-direction: column;
