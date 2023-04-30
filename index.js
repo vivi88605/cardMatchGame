@@ -17,7 +17,7 @@ const model = {
   isRevealedCardsMatch() {
     return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
   },
-  score: 0,
+  score: 250,
   tryCount: 0,
 }
 
@@ -95,6 +95,17 @@ const view = {
         event.target.classList.remove('unMatch'), { once: true }
       })
     })
+  },
+  showGameFinished() {
+    const div = document.createElement('div')
+    div.classList.add('finishMessage')
+    div.innerHTML = `
+    <p>Complete!</p>
+    <p>Score: ${model.score}</p>
+    <p>You've tried: ${model.triedTimes} times</p>
+    `
+    const header = document.querySelector('#header')
+    header.before(div)
   }
 }
 
@@ -133,6 +144,11 @@ const controller = {
           this.currentState = GAME_STATE.CardMatched
           view.pairCards(...model.revealedCards)
           model.revealedCards = []
+          if (model.score === 260) {
+            this.currentState = GAME_STATE.GameSuccess
+            view.showGameFinished()
+            return
+          }
           this.currentState = GAME_STATE.FirstCardAwaits
         } else {//配對失敗
           this.currentState = GAME_STATE.CardMatchFailed
