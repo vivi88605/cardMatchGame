@@ -1,0 +1,74 @@
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  height: 10vw;
+  flex: 7% 1 1;
+  /* flex-basic flex-grow flex-shrink */
+  border: 1px solid grey;
+  border-radius: .5em;
+  margin: 2px;
+
+  /* 卡片內元素 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.back {
+  background-image: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+}
+
+.card p {
+  margin: .2em .4em;
+  font-size: 1.5em;
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+}
+
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+.paired {
+  background-color: #dae0e3;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+#header h3 {
+  margin-left: .5em;
+}
+
+#header img {
+  max-width: 4em;
+}
+
+#header .title {
+  display: flex;
+  /* justify-content: flex-end; */
+}
+
+#header .score {
+  color: #6c90ac;
+  margin: 0;
+}
+
+#header .tryCouont {
+  margin: 0;
+}
